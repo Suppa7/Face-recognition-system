@@ -24,6 +24,6 @@ def find_encoding(imageslist):
 encode_list_known = find_encoding(img_list)
 encode_list_known_id = [encode_list_known, student_id]
 
-file = open("EncodeFile.p",'wb')
+file = open("EncodeFileFinal.p",'wb')
 pickle.dump(encode_list_known_id,file)
 file.close()

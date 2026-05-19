@@ -26,7 +26,7 @@ for path in mode_list:
     img_mode_list.append(cv2.imread(os.path.join(folder_mode,path)))
 
 #load encode file
-file = open('EncodeFile.p','rb')
+file = open('EncodeFileFinal.p','rb')
 encode_list_known_id = pickle.load(file)
 file.close()
 encode_list_known, student_id = encode_list_known_id
@@ -81,13 +81,13 @@ while True:
                 
                 if counter ==1:
                     #get data
-                    student_info = db.reference(f'Students/{id}').get()
+                    student_info = db.reference(f'477-306/{id}').get()
                     #update data
                     datetime_object = datetime.strptime(student_info['last_attendance_time'],
                                                     "%Y-%m-%d %H:%M:%S")
                     
                     if datetime_object.date() != datetime.now().date():
-                        ref = db.reference(f'Students/{id}')
+                        ref = db.reference(f'477-306/{id}')
                         student_info['total_attendance'] += 1
                         ref.child('total_attendance').set(student_info['total_attendance'])
                         ref.child('last_attendance_time').set(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
